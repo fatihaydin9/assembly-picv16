@@ -1,3 +1,12 @@
+;LM35 sıcaklık sensörü kullanılarak bir klima kontrol algoritması kodlayınız.
+;Ortam sıcaklığını LCD displayde gösteriniz. 2 adet buton ile referans sıcaklığı arttırıp azaltınız. 
+;İşlemcinin hangi portlarını kullanacağınızı kendiniz belirleyiniz. 
+;Sistemin çalışmasını PROTEUS ortamında test edeceksiniz. 
+;Klimanın motorunun temsilen bir adet I/O pinine bağlı ledi yakıp söndürünüz. 
+;Eğer ortam sıcaklığı referans sıcaklıktan daha büyükse ledi yakınız. Aksi durumda söndürünüz. 
+;Hem ortam hem de hedef sıcaklık LCD de görüntülenecektir. 
+
+
 	LIST P=16F877A
 	#INCLUDE <P16F877A.INC>
 	DEGER EQU 0X20
