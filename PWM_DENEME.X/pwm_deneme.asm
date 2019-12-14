@@ -1,3 +1,8 @@
+;RC1 pinine bağlı olan ledin şiddetini RA0 ve RA1 pinlerini bağlı butonları kullanarak, 
+;aynı şekilde RC2 pinine bağlı olan ledin ışık şiddetini ise 
+;RA2 ve RA3 pinlerine bağlı butonları kullanarak arttırıp azaltan programı yazınız.
+;ISIK SIDDETI YERINE DC MOTOR HIZI DA OLUR
+
 __CONFIG H'3F31'
     
 list p = 16f877a
