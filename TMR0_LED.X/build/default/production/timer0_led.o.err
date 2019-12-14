@@ -1,0 +1,5 @@
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\TMR0_LED.X\TIMER0_LED.ASM 1 : Found directive in column 1. (list)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\TMR0_LED.X\TIMER0_LED.ASM 4 : Found directive in column 1. (__CONFIG)
+Message[305] C:\USERS\FATAY\MPLABXPROJECTS\TMR0_LED.X\TIMER0_LED.ASM 38 : Using default destination of 1 (file).
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\TMR0_LED.X\TIMER0_LED.ASM 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\TMR0_LED.X\TIMER0_LED.ASM 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.

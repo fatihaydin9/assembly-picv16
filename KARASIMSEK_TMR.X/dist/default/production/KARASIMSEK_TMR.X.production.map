@@ -1,0 +1,44 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Mon Nov 11 10:55:50 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000004
+                   .org_2       code   0x000004    program   0x00007c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000001      
+                            0x000004    0x000041      
+            64 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    CALIS   0x00002f    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                    DONUS   0x000016    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+               ON_AYARLAR   0x00001d    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                      SAG   0x000039    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                      SOL   0x000030    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+               TMR0_KESME   0x000004    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               TMR0_KESME   0x000004    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                    DONUS   0x000016    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+               ON_AYARLAR   0x00001d    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                    CALIS   0x00002f    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                      SOL   0x000030    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+                      SAG   0x000039    program     static C:\Users\fatay\MPLABXProjects\KARASIMSEK_TMR.X\karasimsek_tmr.asm
+
+

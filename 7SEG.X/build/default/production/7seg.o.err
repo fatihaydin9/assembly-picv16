@@ -1,0 +1,11 @@
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 6 : Found label after column 1. (BASLANGIC)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 7 : Found label after column 1. (DEG1)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 8 : Found label after column 1. (DEG2)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 19 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 21 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 25 : Found label after column 1. (DD)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 45 : Found label after column 1. (LOOK_UP)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 58 : Found label after column 1. (GECIKME)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 67 : Found label after column 1. (DEG2AZALT)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\7SEG.X\7SEG.ASM 73 : Found directive in column 1. (END)

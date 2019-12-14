@@ -1,0 +1,76 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Tue Dec 10 11:35:19 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x0001b4
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x0000d9      
+            218 out of 8454 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   ARTTIR   0x000041    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                    AZALT   0x000045    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             BIRLER_ARTIR   0x0000ad    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                    CALIS   0x00003d    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      DON   0x0000d3    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                     DON2   0x0000d5    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 DONUSTUR   0x000022    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      DUR   0x000039    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                       E2   0x000030    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  GECIKME   0x0000d1    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 GECIKME2   0x0000ce    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  KIYASLA   0x000031    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             KOMUT_GONDER   0x0000ba    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                KOMUT_YAZ   0x0000b4    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  KONTROL   0x000026    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                     LOOP   0x000049    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                     MAIN   0x000001    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      OKU   0x00009a    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+              ONLAR_ARTIR   0x0000a6    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  TEMIZLE   0x00001c    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+              VERI_GONDER   0x0000c7    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 VERI_YAZ   0x0000c1    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             YUZLER_ARTIR   0x00009f    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     MAIN   0x000001    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  TEMIZLE   0x00001c    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 DONUSTUR   0x000022    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  KONTROL   0x000026    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                       E2   0x000030    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  KIYASLA   0x000031    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      DUR   0x000039    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                    CALIS   0x00003d    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                   ARTTIR   0x000041    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                    AZALT   0x000045    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                     LOOP   0x000049    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      OKU   0x00009a    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             YUZLER_ARTIR   0x00009f    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+              ONLAR_ARTIR   0x0000a6    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             BIRLER_ARTIR   0x0000ad    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                KOMUT_YAZ   0x0000b4    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+             KOMUT_GONDER   0x0000ba    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 VERI_YAZ   0x0000c1    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+              VERI_GONDER   0x0000c7    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                 GECIKME2   0x0000ce    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                  GECIKME   0x0000d1    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                      DON   0x0000d3    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+                     DON2   0x0000d5    program     static C:\Users\fatay\MPLABXProjects\MITSUBISHI.X\klima.asm
+
+

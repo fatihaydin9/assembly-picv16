@@ -1,0 +1,766 @@
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001   
+                      00002         LIST P=16F877A
+                      00003         #INCLUDE <P16F877A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Mar 17 2019
+                      00005 ;  MPASM PIC16F877A processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2019 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00567         LIST
+Warning[207]: Found label after column 1. (DEGER)
+  00000020            00004         DEGER EQU 0X20
+Warning[207]: Found label after column 1. (DEGER2)
+  00000021            00005         DEGER2 EQU 0X21
+Warning[207]: Found label after column 1. (TEMP)
+  00000022            00006         TEMP EQU 0X22
+Warning[207]: Found label after column 1. (BIRLER)
+  00000023            00007         BIRLER EQU 0X23
+Warning[207]: Found label after column 1. (ONLAR)
+  00000024            00008         ONLAR EQU 0X24
+Warning[207]: Found label after column 1. (YUZLER)
+  00000025            00009         YUZLER EQU 0X25
+Warning[207]: Found label after column 1. (OKUNAN_DEGER)
+  00000026            00010         OKUNAN_DEGER EQU 0X26
+Warning[207]: Found label after column 1. (REFERANS)
+  00000027            00011         REFERANS    EQU 0X27
+                      00012 
+0000                  00013         ORG 0X00
+0000   2801           00014         GOTO MAIN
+0001                  00015 MAIN
+0001   1683 1303      00016         BANKSEL TRISB
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0186           00017         CLRF TRISB      
+0004   1283 1303      00018         BANKSEL ADCON0
+0006   30C1           00019         MOVLW B'11000001'
+0007   009F           00020         MOVWF ADCON0
+0008   1683 1303      00021         BANKSEL ADCON1
+000A   308E           00022         MOVLW B'10001110'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   009F           00023         MOVWF ADCON1
+000C   1683 1303      00024         BANKSEL TRISA
+000E   30FF           00025         MOVLW 0XFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   0085           00026         MOVWF TRISA
+0010   3003           00027         MOVLW   B'00000011'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0011   0088           00028         MOVWF   TRISD
+0012   1283 1303      00029         BANKSEL PORTB
+0014   0186           00030         CLRF PORTB
+0015   0185           00031         CLRF PORTA
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0016   0188           00032         CLRF    PORTD
+0017   01A6           00033         CLRF OKUNAN_DEGER
+0018   1283 1303      00034         BANKSEL  REFERANS
+001A   3019           00035         MOVLW    D'25'
+001B   00A7           00036         MOVWF    REFERANS
+001C                  00037 TEMIZLE
+001C   3002           00038         MOVLW 0X02
+001D   20B4           00039         CALL KOMUT_YAZ
+001E   300F           00040         MOVLW 0X0F
+001F   20B4           00041         CALL KOMUT_YAZ
+0020   3080           00042         MOVLW 0X80
+0021   20B4           00043         CALL KOMUT_YAZ
+0022                  00044 DONUSTUR
+0022   1283 1303      00045         BANKSEL ADCON0
+0024   151F           00046         BSF ADCON0,GO
+0025   20D1           00047         CALL GECIKME
+0026                  00048 KONTROL
+0026   191F           00049         BTFSC ADCON0,GO
+0027   2826           00050         GOTO KONTROL
+0028   1683 1303      00051         BANKSEL ADRESL
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002A   0C9E           00052         RRF ADRESL
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002B   081E           00053         MOVF ADRESL,W
+002C   1283 1303      00054         BANKSEL OKUNAN_DEGER
+002E   00A6           00055         MOVWF OKUNAN_DEGER
+002F   2831           00056         GOTO    KIYASLA
+Warning[207]: Found label after column 1. (E2)
+0030                  00057         E2
+0030   2849           00058         GOTO    LOOP
+0031                  00059 KIYASLA
+0031   1283 1303      00060         BANKSEL REFERANS
+0033   0227           00061         SUBWF   REFERANS,W
+0034   1283 1303      00062         BANKSEL PORTA
+0036   1C03           00063         BTFSS   STATUS,C
+0037   2839           00064         GOTO    DUR
+0038   283D           00065         GOTO    CALIS
+0039                  00066 DUR
+0039   1283 1303      00067         BANKSEL PORTA
+003B   1108           00068         BCF     PORTD,2
+003C   2830           00069         GOTO    E2
+003D                  00070 CALIS   
+003D   1283 1303      00071         BANKSEL PORTA
+003F   1508           00072         BSF     PORTD,2
+0040   2830           00073         GOTO    E2
+0041                  00074 ARTTIR
+0041   1283 1303      00075         BANKSEL REFERANS
+0043   0AA7           00076         INCF    REFERANS,F
+0044   2849           00077         GOTO    LOOP
+0045                  00078 AZALT
+0045   1283 1303      00079         BANKSEL REFERANS
+0047   03A7           00080         DECF    REFERANS,F
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0048   2849           00081         GOTO    LOOP
+0049                  00082 LOOP
+0049   209A           00083         CALL OKU
+004A   3002           00084         MOVLW 0X02
+004B   20B4           00085         CALL KOMUT_YAZ
+                      00086         
+                      00087         
+004C   3053           00088         MOVLW A'S'
+004D   20C1           00089         CALL VERI_YAZ
+004E   3049           00090         MOVLW A'I'
+004F   20C1           00091         CALL VERI_YAZ
+0050   3043           00092         MOVLW A'C'
+0051   20C1           00093         CALL VERI_YAZ
+0052   3041           00094         MOVLW A'A'
+0053   20C1           00095         CALL VERI_YAZ
+0054   304B           00096         MOVLW A'K'
+0055   20C1           00097         CALL VERI_YAZ
+0056   304C           00098         MOVLW A'L'
+0057   20C1           00099         CALL VERI_YAZ
+0058   3049           00100         MOVLW A'I'
+0059   20C1           00101         CALL VERI_YAZ
+005A   304B           00102         MOVLW A'K'
+005B   20C1           00103         CALL VERI_YAZ
+005C   303A           00104         MOVLW A':'
+005D   20C1           00105         CALL VERI_YAZ
+005E   0825           00106         MOVF YUZLER,W
+005F   20C1           00107         CALL VERI_YAZ
+0060   0824           00108         MOVF ONLAR,W
+0061   20C1           00109         CALL VERI_YAZ
+0062   0823           00110         MOVF BIRLER,W
+0063   20C1           00111         CALL VERI_YAZ
+0064   3020           00112         MOVLW A' '
+0065   20C1           00113         CALL VERI_YAZ
+0066   30DF           00114         MOVLW 0XDF
+0067   20C1           00115         CALL VERI_YAZ
+0068   3043           00116         MOVLW A'C'
+0069   20C1           00117         CALL VERI_YAZ
+006A   20CE           00118         CALL GECIKME2
+                      00119         
+006B   0827           00120         MOVF    REFERANS,W
+006C   00A6           00121         MOVWF   OKUNAN_DEGER
+006D   209A           00122         CALL OKU
+006E   3002           00123         MOVLW 0X02
+006F   20B4           00124         CALL KOMUT_YAZ
+0070   300C           00125         MOVLW 0X0C
+0071   20B4           00126         CALL KOMUT_YAZ
+0072   3028           00127         MOVLW 0X28
+0073   20B4           00128         CALL KOMUT_YAZ
+0074   30C0           00129         MOVLW 0XC0
+0075   20B4           00130         CALL KOMUT_YAZ
+0076   3052           00131         MOVLW A'R'
+0077   20C1           00132         CALL VERI_YAZ
+0078   3045           00133         MOVLW A'E'
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0079   20C1           00134         CALL VERI_YAZ
+007A   3046           00135         MOVLW A'F'
+007B   20C1           00136         CALL VERI_YAZ
+007C   3045           00137         MOVLW A'E'
+007D   20C1           00138         CALL VERI_YAZ
+007E   3052           00139         MOVLW A'R'
+007F   20C1           00140         CALL VERI_YAZ
+0080   3041           00141         MOVLW A'A'
+0081   20C1           00142         CALL VERI_YAZ
+0082   304E           00143         MOVLW A'N'
+0083   20C1           00144         CALL VERI_YAZ
+0084   3053           00145         MOVLW A'S'
+0085   20C1           00146         CALL VERI_YAZ
+0086   303A           00147         MOVLW A':'
+0087   20C1           00148         CALL VERI_YAZ
+0088   0825           00149         MOVF YUZLER,W
+0089   20C1           00150         CALL VERI_YAZ
+008A   0824           00151         MOVF ONLAR,W
+008B   20C1           00152         CALL VERI_YAZ
+008C   0823           00153         MOVF BIRLER,W
+008D   20C1           00154         CALL VERI_YAZ
+008E   3020           00155         MOVLW A' '
+008F   20C1           00156         CALL VERI_YAZ
+0090   30DF           00157         MOVLW 0XDF
+0091   20C1           00158         CALL VERI_YAZ
+0092   3043           00159         MOVLW A'C'
+0093   20C1           00160         CALL VERI_YAZ
+0094   20CE           00161         CALL GECIKME2
+                      00162         
+                      00163         
+0095   1808           00164         BTFSC    PORTD,0
+0096   2841           00165         GOTO    ARTTIR
+0097   1888           00166         BTFSC    PORTD,1
+0098   2845           00167         GOTO    AZALT
+                      00168         
+0099   2822           00169         GOTO DONUSTUR
+                      00170 
+009A                  00171 OKU
+009A   01A5           00172         CLRF YUZLER
+009B   01A4           00173         CLRF ONLAR
+009C   01A3           00174         CLRF BIRLER
+009D   0186           00175         CLRF PORTB
+009E   0826           00176         MOVF OKUNAN_DEGER,W     
+009F                  00177 YUZLER_ARTIR
+009F   3064           00178         MOVLW D'100'
+00A0   0226           00179         SUBWF OKUNAN_DEGER,0
+00A1   1C03           00180         BTFSS STATUS,C
+00A2   28A6           00181         GOTO ONLAR_ARTIR
+00A3   00A6           00182         MOVWF OKUNAN_DEGER
+00A4   0AA5           00183         INCF YUZLER,1
+00A5   289F           00184         GOTO YUZLER_ARTIR
+00A6                  00185 ONLAR_ARTIR
+00A6   300A           00186         MOVLW D'10'
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A7   0226           00187         SUBWF OKUNAN_DEGER,0
+00A8   1C03           00188         BTFSS STATUS,C
+00A9   28AD           00189         GOTO BIRLER_ARTIR
+00AA   00A6           00190         MOVWF OKUNAN_DEGER
+00AB   0AA4           00191         INCF ONLAR,1
+00AC   28A6           00192         GOTO ONLAR_ARTIR
+00AD                  00193 BIRLER_ARTIR
+00AD   0826           00194         MOVF OKUNAN_DEGER,0
+00AE   00A3           00195         MOVWF BIRLER
+                      00196         
+00AF   3030           00197         MOVLW 0X30
+00B0   04A5           00198         IORWF YUZLER,F
+00B1   04A4           00199         IORWF ONLAR,F
+00B2   04A3           00200         IORWF BIRLER,F
+Warning[203]: Found opcode in column 1. (RETURN)
+00B3   0008           00201 RETURN
+                      00202 
+                      00203 
+00B4                  00204 KOMUT_YAZ
+00B4   00A2           00205         MOVWF TEMP
+00B5   0E22           00206         SWAPF TEMP,W
+00B6   20BA           00207         CALL KOMUT_GONDER
+00B7   0822           00208         MOVF TEMP,W
+00B8   20BA           00209         CALL KOMUT_GONDER
+00B9   0008           00210         RETURN
+                      00211 
+00BA                  00212 KOMUT_GONDER
+Message[305]: Using default destination of 1 (file).
+00BA   058F           00213         ANDWF 0X0F
+00BB   0086           00214         MOVWF PORTB
+00BC   1206           00215         BCF PORTB,4
+00BD   1686           00216         BSF PORTB,5
+00BE   20D1           00217         CALL GECIKME
+00BF   1286           00218         BCF PORTB,5
+00C0   0008           00219         RETURN
+                      00220 
+00C1                  00221 VERI_YAZ
+00C1   00A2           00222         MOVWF TEMP
+00C2   0E22           00223         SWAPF TEMP,W
+00C3   20C7           00224         CALL VERI_GONDER
+00C4   0822           00225         MOVF TEMP,W
+00C5   20C7           00226         CALL VERI_GONDER
+00C6   0008           00227         RETURN
+                      00228 
+00C7                  00229 VERI_GONDER
+Message[305]: Using default destination of 1 (file).
+00C7   058F           00230         ANDWF 0X0F
+00C8   0086           00231         MOVWF PORTB
+00C9   1606           00232         BSF PORTB,4
+00CA   1686           00233         BSF PORTB,5
+00CB   20D1           00234         CALL GECIKME
+00CC   1286           00235         BCF PORTB,5
+00CD   0008           00236         RETURN
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00237         
+                      00238 
+00CE                  00239 GECIKME2
+00CE   30FF           00240         MOVLW 0XFF
+00CF   00A0           00241         MOVWF DEGER
+00D0   28D3           00242         GOTO DON
+00D1                  00243 GECIKME
+00D1   3004           00244         MOVLW 0X04
+00D2   00A0           00245         MOVWF DEGER
+00D3                  00246 DON
+00D3   308F           00247         MOVLW 0X8F
+00D4   00A1           00248         MOVWF DEGER2
+00D5                  00249 DON2
+00D5   0BA1           00250         DECFSZ DEGER2,1
+00D6   28D5           00251         GOTO DON2
+00D7   0BA0           00252         DECFSZ DEGER,1
+00D8   28D3           00253         GOTO DON
+00D9   0008           00254         RETURN
+Warning[205]: Found directive in column 1. (END)
+                      00255 END
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADCS2                             00000006
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ARTTIR                            00000041
+AZALT                             00000045
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BIRLER                            00000023
+BIRLER_ARTIR                      000000AD
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CALIS                             0000003D
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIS                               00000003
+CKE                               00000006
+CKP                               00000004
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000009C
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+CVR0                              00000000
+CVR1                              00000001
+CVR2                              00000002
+CVR3                              00000003
+CVRCON                            0000009D
+CVREN                             00000007
+CVROE                             00000006
+CVRR                              00000005
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DEGER                             00000020
+DEGER2                            00000021
+DON                               000000D3
+DON2                              000000D5
+DONUSTUR                          00000022
+DUR                               00000039
+D_A                               00000005
+D_NOT_A                           00000005
+E2                                00000030
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GECIKME                           000000D1
+GECIKME2                          000000CE
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+KIYASLA                           00000031
+KOMUT_GONDER                      000000BA
+KOMUT_YAZ                         000000B4
+KONTROL                           00000026
+LOOP                              00000049
+MAIN                              00000001
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OKU                               0000009A
+OKUNAN_DEGER                      00000026
+ONLAR                             00000024
+ONLAR_ARTIR                       000000A6
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+REFERANS                          00000027
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TEMIZLE                           0000001C
+TEMP                              00000022
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+VERI_GONDER                       000000C7
+VERI_YAZ                          000000C1
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+YUZLER                            00000025
+YUZLER_ARTIR                      0000009F
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00001FFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+MPASM 5.84                         KLIMA.ASM   12-10-2019  11:35:18         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXX------ ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   218
+Program Memory Words Free:  7974
+
+
+Errors   :     0
+Warnings :    11 reported,     0 suppressed
+Messages :     9 reported,     0 suppressed
+
+

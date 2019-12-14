@@ -1,0 +1,6 @@
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 47 : Found label after column 1. (BIRYAP)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 51 : Found label after column 1. (SIFIRYAP)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 55 : Found label after column 1. (CIKIS)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 71 : Found label after column 1. (DONGU)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\RBZERO_INTERRUPT.X\RBZERO.ASM 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.

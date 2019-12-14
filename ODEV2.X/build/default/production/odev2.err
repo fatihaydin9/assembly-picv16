@@ -1,0 +1,12 @@
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 1 : Found directive in column 1. (list)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 4 : Found directive in column 1. (__CONFIG)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 17 : Found directive in column 1. (ORG)
+Warning[203] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 18 : Found opcode in column 1. (NOP)
+Warning[203] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 19 : Found opcode in column 1. (GOTO)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 21 : Found directive in column 1. (ORG)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 75 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 144 : Using default destination of 1 (file).
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\ODEV2.X\ODEV2.ASM 153 : Found directive in column 1. (END)

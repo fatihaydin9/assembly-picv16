@@ -1,0 +1,66 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Sat Nov 16 18:03:17 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x0000f6
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00007a      
+            123 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    BASLA   0x00003e    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    BITIR   0x00007b    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    CALIS   0x000053    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    D50_D   0x000076    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                     D5_D   0x00006d    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+               DATA_TABLE   0x000054    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+              DATA_TABLE2   0x00005c    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                      DDR   0x00003f    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                     DDR2   0x000047    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    DNGU1   0x000066    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+              DUSEN_KENAR   0x000002    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+           GECIKME_200USN   0x000064    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+            GECIKME_50MSN   0x000072    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+             GECIKME_5MSN   0x000069    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+          KARAKTER_GONDER   0x00001b    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+            KOMUT4_GONDER   0x000008    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+             KOMUT_GONDER   0x000011    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+               LCD_AYARLA   0x000024    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+              DUSEN_KENAR   0x000002    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+            KOMUT4_GONDER   0x000008    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+             KOMUT_GONDER   0x000011    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+          KARAKTER_GONDER   0x00001b    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+               LCD_AYARLA   0x000024    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    BASLA   0x00003e    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                      DDR   0x00003f    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                     DDR2   0x000047    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    CALIS   0x000053    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+               DATA_TABLE   0x000054    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+              DATA_TABLE2   0x00005c    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+           GECIKME_200USN   0x000064    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    DNGU1   0x000066    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+             GECIKME_5MSN   0x000069    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                     D5_D   0x00006d    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+            GECIKME_50MSN   0x000072    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    D50_D   0x000076    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+                    BITIR   0x00007b    program     static C:\Users\fatay\MPLABXProjects\FATIH_AYDIN.X\fatihaydin.asm
+
+

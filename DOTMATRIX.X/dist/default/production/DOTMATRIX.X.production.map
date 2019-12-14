@@ -1,0 +1,74 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Tue Nov 05 02:17:52 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000116
+ .config_2007_DOTMATRIX.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00008a      
+                            0x002007    0x002007      
+            140 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    ASAGI   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                BASLANGIC   0x000007    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                  BTN_ARA   0x00001b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                DEG2AZALT   0x000047    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+               DEGB_AZALT   0x000051    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                  GECIKME   0x000040    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+            GECIKME_HIZLI   0x00004a    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                 LOOK_UPX   0x000084    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                      SAG   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                      SOL   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+               SOLAKAYDIR   0x000071    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+              SOLA_DONDUR   0x00007c    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                    SUPUR   0x000031    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR2   0x000036    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR3   0x000059    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR4   0x00005e    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR5   0x000063    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR6   0x000068    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   YATAY3   0x000054    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+              YATAY3_LOOK   0x000074    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   YUKARI   0x000024    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                BASLANGIC   0x000007    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                  BTN_ARA   0x00001b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   YUKARI   0x000024    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                      SOL   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                      SAG   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                    ASAGI   0x00002b    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                    SUPUR   0x000031    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR2   0x000036    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                  GECIKME   0x000040    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                DEG2AZALT   0x000047    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+            GECIKME_HIZLI   0x00004a    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+               DEGB_AZALT   0x000051    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   YATAY3   0x000054    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR3   0x000059    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR4   0x00005e    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR5   0x000063    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                   SUPUR6   0x000068    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+               SOLAKAYDIR   0x000071    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+              YATAY3_LOOK   0x000074    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+              SOLA_DONDUR   0x00007c    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+                 LOOK_UPX   0x000084    program     static C:\Users\fatay\MPLABXProjects\DOTMATRIX.X\dotmatrix.asm
+
+

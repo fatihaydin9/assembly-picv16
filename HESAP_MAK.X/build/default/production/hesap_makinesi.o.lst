@@ -1,0 +1,1240 @@
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3F31           00001     __CONFIG H'3F31'
+                      00002     list p = 16f877a
+                      00003     #include<p16f877.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Mar 17 2019
+                      00005 ;  MPASM PIC16F877 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2019 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+                      00541         LIST
+                      00004     
+                      00005         ;GECIKME DEGISKENLERI
+Warning[207]: Found label after column 1. (GECIKME1)
+  00000020            00006         GECIKME1    EQU 0x20            ;1.GECIKME ICIK
+Warning[207]: Found label after column 1. (GECIKME2)
+  00000021            00007         GECIKME2    EQU 0x21            ;2.GECIKME ICIN
+Warning[207]: Found label after column 1. (GECIKME3)
+  00000022            00008         GECIKME3    EQU 0x22            ;3.GECIKME ICIN
+                      00009         
+                      00010         ;LCD DEGISKENLERI
+Warning[207]: Found label after column 1. (VERI4)
+  00000023            00011         VERI4         EQU       0X23            ;VERININ EN DUSUK 4 BITI
+Warning[207]: Found label after column 1. (ISLEM)
+  00000024            00012         ISLEM         EQU       0X24            ;HANGI ISLEM KULLANILACAK?
+Warning[207]: Found label after column 1. (LCD_TEMP)
+  00000025            00013         LCD_TEMP    EQU 0X25            ;LCD TEMP DEGIS.
+Warning[207]: Found label after column 1. (LCD_TRIS)
+  00000086            00014         LCD_TRIS    EQU TRISB           ;TRISB - TEMSILI
+Warning[207]: Found label after column 1. (LCD_PORT)
+  00000006            00015         LCD_PORT    EQU PORTB           ;PORTB - TEMSILI
+                      00016         
+Warning[207]: Found label after column 1. (LCD_RS)
+  00000004            00017         LCD_RS      EQU     4                   ;RS BITININ TEMSILI
+Warning[207]: Found label after column 1. (LCD_E)
+  00000005            00018         LCD_E       EQU     5                   ;ENABLE BITI TEMSIL
+                      00019             
+Warning[207]: Found label after column 1. (DEGER1)
+  00000026            00020         DEGER1      EQU     0X26                ;ISLENECEK OPERAND-1
+Warning[207]: Found label after column 1. (DEGER2)
+  00000027            00021         DEGER2      EQU     0X27                ;ISLENECEK OPERAND-2
+Warning[207]: Found label after column 1. (SIRA)
+  00000028            00022         SIRA        EQU     0X28                ;ISLEM SIRASI
+Warning[207]: Found label after column 1. (RESULT)
+  00000029            00023         RESULT      EQU     0X29                ;ISLEM SONUCU
+Warning[207]: Found label after column 1. (OTUZF)
+  00000030            00024         OTUZF       EQU     0X30                ;RAKAMLARIN ASCII BASLANGICI
+                      00025             
+Warning[207]: Found label after column 1. (BIRLER)
+  00000031            00026         BIRLER      EQU     0X31
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[207]: Found label after column 1. (ONLAR)
+  00000032            00027         ONLAR       EQU     0X32
+Warning[207]: Found label after column 1. (YEDEK)
+  00000033            00028         YEDEK       EQU     0X33  
+Warning[207]: Found label after column 1. (ON)
+  00000034            00029         ON          EQU     0X34
+Warning[207]: Found label after column 1. (TMP)
+  00000035            00030         TMP         EQU     0X35
+                      00031             
+0000                  00032         ORG 0X000
+0000   0000           00033         NOP
+0001   2914           00034         GOTO BASLA
+                      00035         
+Warning[207]: Found label after column 1. (DUSEN_KENAR)
+0002                  00036         DUSEN_KENAR
+0002   1283 1303      00037             BANKSEL     LCD_PORT                ;BANK0 SEC.
+0004   1686           00038             BSF         LCD_PORT,LCD_E  ;ONCE E UCUNU 1 YAP
+0005   2164           00039             CALL        GECIKME_200USN  ;GECIKMEYE GIT
+0006   1286           00040             BCF         LCD_PORT,LCD_E  ;E UCUNU 0 YAP KI UYAR
+0007   0008           00041             RETURN
+                      00042             
+Warning[207]: Found label after column 1. (KOMUT4_GONDER)
+0008                  00043         KOMUT4_GONDER
+0008   390F           00044             ANDLW       0x0F                    ;WREG 'TEN GELEN VERININ EN DUSUK 4 BITINI AL.
+0009   00A3           00045             MOVWF       VERI4                   ;BU 4 BITLIK PAKETI VERI DEGISKENINE AT.
+                      00046 
+000A   0806           00047             MOVFW       LCD_PORT                ;PORTB 'DEKI DEGERI WREG 'E YAZ. 
+000B   39F0           00048             ANDLW       0xF0                    ;PORTB 'DEKI EN DEGERLI 4BITI AL (AYAR BITLERI)
+                      00049         
+000C   0423           00050             IORWF       VERI4,W         ;WREG LSB4 + PORTB MSB4 IKI PAKETI BIRLESTIR    
+000D   0086           00051             MOVWF       LCD_PORT                ;BIRLESTIRDIGIN PAKETLERI PORTB 'YE ATA.
+                      00052         
+000E   2002           00053             CALL        DUSEN_KENAR             ;BU ISLEMLER ICIN ENABLE BITINI DURTMEN GEREKIR
+000F   2164           00054             CALL        GECIKME_200USN  ;100MIKROSANIYE GECIKME
+0010   0008           00055             RETURN
+                      00056             
+Warning[207]: Found label after column 1. (KOMUT_GONDER)
+0011                  00057         KOMUT_GONDER
+                      00058             ;2 ASAMADA GONDERME YAPMAK - ICIN BU METOD KULLANILIR.
+                      00059         
+0011   00A5           00060             MOVWF       LCD_TEMP                ; ONCE GONDERILECEK VERIYI SAKLA
+0012   0E25           00061             SWAPF       LCD_TEMP,W              ; GONDERILECEK VERININ ILK DOR VE SON DORT BITINI YER DE
+                            GISTIR
+                      00062 
+0013   1283 1303      00063             BANKSEL     LCD_PORT                ; BANK0 'A GEC
+0015   1206           00064             BCF         LCD_PORT,LCD_RS ; RS UCUNU 0 A CEK VE KOMUT GONDERECEGINI SOYLE
+                      00065 
+0016   2008           00066             CALL        KOMUT4_GONDER   ; BU EN DEGERLIKLI 4 BITI YOLLA
+                      00067 
+0017   0825           00068             MOVF        LCD_TEMP,W              ; SIMDI EN DEGERLIKSIZ 4 U GONDER
+0018   1206           00069             BCF         LCD_PORT,LCD_RS ; RS UCUNU 0 A CEK VE KOMUT GONDERECEGINI SOYLE
+0019   2008           00070             CALL        KOMUT4_GONDER
+                      00071         
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+001A   0008           00072             RETURN
+                      00073             
+Warning[207]: Found label after column 1. (KARAKTER_GONDER)
+001B                  00074         KARAKTER_GONDER
+001B   00A5           00075             MOVWF       LCD_TEMP                ; GELEN VERI ICIN SWAP ISLEMI YAPILACAGINDAN KORU
+001C   0E25           00076             SWAPF       LCD_TEMP,W              ; EN DEGERLIKLI BITLER ICIN SWAP YAP
+001D   1283 1303      00077             BANKSEL     LCD_PORT                ; BANK0 A GECIYORUZ.
+001F   1606           00078             BSF         LCD_PORT,LCD_RS ; KARAKTER YAZMA ICIN RS=1
+0020   2008           00079             CALL        KOMUT4_GONDER   ; 4 BIT MODUNDA KARAKTERI GONDER
+0021   0825           00080             MOVF        LCD_TEMP,W              ; SIMDI NORMAL DUSUK DEGERLIKLI BITLERI GONDER
+0022   2008           00081             CALL        KOMUT4_GONDER
+0023   0008           00082             RETURN
+                      00083 
+Warning[207]: Found label after column 1. (LCD_AYARLA)
+0024                  00084         LCD_AYARLA
+0024   3000           00085             MOVLW 0X00
+0025   00A6           00086             MOVWF DEGER1                        ;OPERAND BIR HENUZ SIFIR.
+0026   00A7           00087             MOVWF DEGER2                        ;OPERAND IKI HENUZ SIFIR.
+0027   00B1           00088             MOVWF BIRLER
+0028   00B2           00089             MOVWF ONLAR
+                      00090             
+0029   3030           00091             MOVLW 0X30
+002A   00B0           00092             MOVWF OTUZF
+                      00093             
+002B   300A           00094             MOVLW D'10'
+002C   00B4           00095             MOVWF ON
+                      00096             
+002D   3005           00097             MOVLW 0X05
+002E   00A8           00098             MOVWF SIRA                  ;ILK BASTA RAKAM OKUNMALI
+                      00099             
+                      00100             
+002F   1683 1303      00101             BANKSEL     LCD_TRIS                ;BANK1 SECIYORUZ.
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0031   0186           00102             CLRF        LCD_TRIS                ;B PORTUNU TAMAMEN CIKIS YAP.
+                      00103 
+0032   1283 1303      00104             BANKSEL     LCD_PORT                ;BANK0 SECIYORUZ.
+0034   2172           00105             CALL        GECIKME_50MSN   ;ACILIS ICIN 50MS BEKLE.
+0035   1206           00106             BCF         LCD_PORT,LCD_RS ;RS BITINI 0 YAP (KOMUT)        
+                      00107 
+                      00108                     
+                      00109             ;GONDERECEGIMIZ KOMUTLAR
+0036   3003           00110             MOVLW       0x03                    ;0X03 GONDERMEMIZ GEREK.
+0037   2011           00111             CALL        KOMUT_GONDER            ;KOMUTU GONDERIYORUZ
+0038   2169           00112             CALL        GECIKME_5MSN            ;5MS BEKLIYORUZ.
+                      00113             
+0039   3002           00114             MOVLW       0x02                    ;0X02 GONDERMEMIZ GEREK.
+003A   2011           00115             CALL        KOMUT_GONDER            ;KOMUTU GONDERIYORUZ
+003B   2164           00116             CALL        GECIKME_200USN  ;BIRAZ BEKLIYORUZ.
+                      00117             
+003C   3028           00118             MOVLW       0x28
+003D   2011           00119             CALL        KOMUT_GONDER
+                      00120 
+003E   3010           00121             MOVLW       0x10    
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003F   2011           00122             CALL        KOMUT_GONDER
+                      00123 
+0040   3001           00124             MOVLW       0x01
+0041   2011           00125             CALL        KOMUT_GONDER
+                      00126 
+0042   3006           00127             MOVLW       0x06
+0043   2011           00128             CALL        KOMUT_GONDER
+                      00129 
+0044   300D           00130             MOVLW       0x0D
+0045   2011           00131             CALL        KOMUT_GONDER
+                      00132             
+Warning[207]: Found label after column 1. (FATIH_AYDIN)
+0046                  00133         FATIH_AYDIN
+                      00134             
+                      00135            
+0046   0008           00136             RETURN
+                      00137             
+Warning[207]: Found label after column 1. (KEYPAD_AYARLA)
+0047                  00138         KEYPAD_AYARLA
+0047   1683 1303      00139             BANKSEL TRISD
+0049   300F           00140             MOVLW 0X0F
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+004A   0088           00141             MOVWF TRISD
+004B   1283 1303      00142             BANKSEL PORTA
+004D   0008           00143             RETURN
+                      00144             
+                      00145             
+Warning[207]: Found label after column 1. (CLEAR_LCD)
+004E                  00146         CLEAR_LCD
+004E   3001           00147             MOVLW 0X01
+004F   2011           00148             CALL KOMUT_GONDER
+                      00149             
+0050   3000           00150             MOVLW 0X00 
+0051   00A6           00151             MOVWF DEGER1
+0052   00A7           00152             MOVWF DEGER2
+0053   00B1           00153             MOVWF BIRLER
+0054   00B2           00154             MOVWF ONLAR
+0055   00A4           00155             MOVWF ISLEM
+                      00156             
+0056   2046           00157             CALL FATIH_AYDIN
+                      00158             
+0057   3005           00159             MOVLW 0X05
+0058   00A8           00160             MOVWF SIRA   
+0059   2916           00161             GOTO  TARA_RAKAM
+                      00162             
+Warning[207]: Found label after column 1. (SONUC)
+005A                  00163         SONUC
+005A   302B           00164             MOVLW 0X2B
+005B   0224           00165             SUBWF ISLEM,W
+005C   1903           00166             BTFSC STATUS,Z
+005D   286B           00167             GOTO  TOPLA_F
+                      00168             
+005E   302D           00169             MOVLW 0X2D
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+005F   0224           00170             SUBWF ISLEM,W
+0060   1903           00171             BTFSC STATUS,Z
+0061   2879           00172             GOTO  CIKAR_F
+                      00173             
+0062   302F           00174             MOVLW 0X2F
+0063   0224           00175             SUBWF ISLEM,W
+0064   1903           00176             BTFSC STATUS,Z
+0065   2882           00177             GOTO  BOL_F
+                      00178             
+0066   3078           00179             MOVLW 0X78
+0067   0224           00180             SUBWF ISLEM,W
+0068   1903           00181             BTFSC STATUS,Z
+0069   288B           00182             GOTO  CARP_F
+                      00183 
+006A   285A           00184             GOTO SONUC
+                      00185         
+Warning[207]: Found label after column 1. (TOPLA_F)
+006B                  00186         TOPLA_F
+006B   0826           00187             MOVFW DEGER1
+006C   0727           00188             ADDWF DEGER2,W
+006D   00A9           00189             MOVWF RESULT
+006E   2891           00190             GOTO  SONUC_DENETLE
+                      00191             
+                      00192             
+Warning[207]: Found label after column 1. (EKSI)
+006F                  00193         EKSI
+006F   0827           00194             MOVFW DEGER2
+0070   00B5           00195             MOVWF TMP       ;DEGER2 VAR
+0071   0826           00196             MOVFW DEGER1
+0072   00A7           00197             MOVWF DEGER2
+0073   0835           00198             MOVFW TMP
+0074   00A6           00199             MOVWF DEGER1
+                      00200 
+0075   0827           00201             MOVFW DEGER2
+0076   0226           00202             SUBWF DEGER1,W
+0077   00A9           00203             MOVWF RESULT
+0078   2891           00204             GOTO  SONUC_DENETLE
+                      00205             
+Warning[207]: Found label after column 1. (CIKAR_F)
+0079                  00206         CIKAR_F
+0079   0827           00207             MOVFW DEGER2
+007A   1403           00208             BSF STATUS,C
+007B   0226           00209             SUBWF DEGER1,W
+007C   1C03           00210             BTFSS STATUS,C
+007D   286F           00211             GOTO EKSI
+                      00212             
+                      00213         
+007E   0827           00214             MOVFW DEGER2
+007F   0226           00215             SUBWF DEGER1,W
+0080   00A9           00216             MOVWF RESULT
+0081   2891           00217             GOTO  SONUC_DENETLE
+                      00218             
+Warning[207]: Found label after column 1. (BOL_F)
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0082                  00219         BOL_F
+0082   01A9           00220             CLRF RESULT
+0083   0827           00221             MOVFW DEGER2
+Warning[207]: Found label after column 1. (D_BOL)
+0084                  00222         D_BOL
+0084   0827           00223             MOVFW DEGER2
+0085   1403           00224             BSF STATUS,C
+0086   02A6           00225             SUBWF DEGER1,F
+0087   1C03           00226             BTFSS STATUS,C
+0088   2891           00227             GOTO SONUC_DENETLE 
+0089   0AA9           00228             INCF RESULT,F
+008A   2884           00229             GOTO D_BOL
+                      00230             
+                      00231             
+Warning[207]: Found label after column 1. (CARP_F)
+008B                  00232         CARP_F
+008B   0103           00233             CLRW
+Warning[207]: Found label after column 1. (D_CARP)
+008C                  00234         D_CARP
+008C   0726           00235             ADDWF  DEGER1,W
+008D   0BA7           00236             DECFSZ DEGER2,F
+008E   288C           00237             GOTO D_CARP
+008F   00A9           00238             MOVWF RESULT
+0090   2891           00239             GOTO SONUC_DENETLE
+                      00240             
+Warning[207]: Found label after column 1. (SONUC_DENETLE)
+0091                  00241         SONUC_DENETLE
+0091   0834           00242             MOVFW ON
+0092   1403           00243             BSF STATUS,C
+0093   0229           00244             SUBWF RESULT,W
+0094   1C03           00245             BTFSS STATUS,C
+0095   2897           00246             GOTO  BIR_BASAMAK
+0096   289B           00247             GOTO  IKI_BASAMAK
+                      00248             
+Warning[207]: Found label after column 1. (BIR_BASAMAK)
+0097                  00249         BIR_BASAMAK
+0097   0830           00250             MOVFW OTUZF
+0098   0729           00251             ADDWF RESULT,W
+0099   201B           00252             CALL  KARAKTER_GONDER
+009A   295E           00253             GOTO  CALIS
+                      00254         
+Warning[207]: Found label after column 1. (IKI_BASAMAK)
+009B                  00255         IKI_BASAMAK
+009B   0834           00256             MOVFW ON
+009C   1403           00257             BSF STATUS,C
+009D   02A9           00258             SUBWF RESULT,F
+009E   1C03           00259             BTFSS STATUS,C
+009F   28A2           00260             GOTO IKI_YAZ_BOLUM
+00A0   0AB2           00261             INCF ONLAR,F
+00A1   289B           00262             GOTO IKI_BASAMAK
+                      00263                 
+Warning[207]: Found label after column 1. (IKI_YAZ_BOLUM)
+00A2                  00264         IKI_YAZ_BOLUM
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A2   0834           00265             MOVFW ON
+00A3   07A9           00266             ADDWF RESULT,F
+00A4   0829           00267             MOVFW RESULT
+00A5   00B1           00268             MOVWF BIRLER
+                      00269             
+Warning[207]: Found label after column 1. (IKI_YAZ)
+00A6                  00270         IKI_YAZ
+00A6   0830           00271             MOVFW   OTUZF
+00A7   0732           00272             ADDWF   ONLAR,W
+00A8   201B           00273             CALL    KARAKTER_GONDER
+00A9   0830           00274             MOVFW   OTUZF
+00AA   0731           00275             ADDWF   BIRLER,W
+00AB   201B           00276             CALL    KARAKTER_GONDER
+                      00277             
+00AC   295E           00278             GOTO CALIS
+                      00279             
+Warning[207]: Found label after column 1. (DEGERLENDIR)
+00AD                  00280         DEGERLENDIR
+00AD   00B3           00281             MOVWF YEDEK
+00AE   3004           00282             MOVLW 0X04
+00AF   0228           00283             SUBWF SIRA,W
+00B0   1903           00284             BTFSC STATUS,Z
+00B1   20B6           00285             CALL  BIRE_ATA              ;DEGISKEN1 'E ATAMA YAP
+00B2   3002           00286             MOVLW 0X02
+00B3   0228           00287             SUBWF SIRA,W                
+00B4   1903           00288             BTFSC STATUS,Z
+00B5   28B9           00289             GOTO IKIYE_ATA              ;DEGISKEN2 'YE ATAMALAR
+                      00290             
+Warning[207]: Found label after column 1. (BIRE_ATA)
+00B6                  00291         BIRE_ATA
+00B6   0833           00292             MOVFW YEDEK
+00B7   00A6           00293             MOVWF DEGER1
+00B8   0008           00294             RETURN
+                      00295             
+Warning[207]: Found label after column 1. (IKIYE_ATA)
+00B9                  00296         IKIYE_ATA   
+00B9   0833           00297             MOVFW YEDEK
+00BA   00A7           00298             MOVWF DEGER2
+00BB   0008           00299             RETURN
+                      00300         
+Warning[207]: Found label after column 1. (DOKUZ)
+00BC                  00301         DOKUZ
+00BC   3039           00302             MOVLW '9'
+00BD   201B           00303             CALL KARAKTER_GONDER
+00BE   03A8           00304             DECF SIRA,F
+                      00305             
+00BF   3009           00306             MOVLW   D'9'
+00C0   20AD           00307             CALL    DEGERLENDIR
+00C1   0008           00308             RETURN
+                      00309           
+Warning[207]: Found label after column 1. (SEKIZ)
+00C2                  00310         SEKIZ
+00C2   3038           00311             MOVLW '8'
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00C3   201B           00312             CALL KARAKTER_GONDER
+00C4   03A8           00313             DECF SIRA,F
+                      00314             
+00C5   3008           00315             MOVLW   D'8'
+00C6   20AD           00316             CALL    DEGERLENDIR
+00C7   0008           00317             RETURN
+                      00318         
+Warning[207]: Found label after column 1. (YEDI)
+00C8                  00319         YEDI
+00C8   3037           00320             MOVLW '7'
+00C9   201B           00321             CALL KARAKTER_GONDER
+00CA   03A8           00322             DECF SIRA,F
+                      00323             
+00CB   3007           00324             MOVLW   D'7'
+00CC   20AD           00325             CALL    DEGERLENDIR
+00CD   0008           00326             RETURN
+                      00327         
+Warning[207]: Found label after column 1. (ALTI)
+00CE                  00328         ALTI
+00CE   3036           00329             MOVLW '6'
+00CF   201B           00330             CALL KARAKTER_GONDER
+00D0   03A8           00331             DECF SIRA,F
+                      00332             
+00D1   3006           00333             MOVLW   D'6'
+00D2   20AD           00334             CALL    DEGERLENDIR
+00D3   0008           00335             RETURN
+                      00336          
+Warning[207]: Found label after column 1. (BES)
+00D4                  00337         BES
+00D4   3035           00338             MOVLW '5'
+00D5   201B           00339             CALL KARAKTER_GONDER
+00D6   03A8           00340             DECF SIRA,F
+                      00341             
+00D7   3005           00342             MOVLW   D'5'
+00D8   20AD           00343             CALL    DEGERLENDIR
+00D9   0008           00344             RETURN
+                      00345 
+Warning[207]: Found label after column 1. (DORT)
+00DA                  00346         DORT
+00DA   3034           00347             MOVLW '4'
+00DB   201B           00348             CALL KARAKTER_GONDER
+00DC   03A8           00349             DECF SIRA,F
+                      00350             
+00DD   3004           00351             MOVLW   D'4'
+00DE   20AD           00352             CALL    DEGERLENDIR
+00DF   0008           00353             RETURN    
+                      00354             
+Warning[207]: Found label after column 1. (UC)
+00E0                  00355         UC
+00E0   3033           00356             MOVLW '3'
+00E1   201B           00357             CALL KARAKTER_GONDER
+00E2   03A8           00358             DECF SIRA,F
+                      00359             
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00E3   3003           00360             MOVLW   D'3'
+00E4   20AD           00361             CALL    DEGERLENDIR
+00E5   0008           00362             RETURN
+                      00363             
+Warning[207]: Found label after column 1. (IKI)
+00E6                  00364         IKI 
+00E6   3032           00365             MOVLW '2'
+00E7   201B           00366             CALL KARAKTER_GONDER
+00E8   03A8           00367             DECF SIRA,F
+                      00368             
+00E9   3002           00369             MOVLW   D'2'
+00EA   20AD           00370             CALL    DEGERLENDIR
+00EB   0008           00371             RETURN
+                      00372             
+Warning[207]: Found label after column 1. (BIR)
+00EC                  00373         BIR
+00EC   3031           00374             MOVLW '1'
+00ED   201B           00375             CALL KARAKTER_GONDER
+00EE   03A8           00376             DECF SIRA,F
+                      00377             
+00EF   3001           00378             MOVLW   D'1'
+00F0   20AD           00379             CALL    DEGERLENDIR
+00F1   0008           00380             RETURN
+                      00381             
+Warning[207]: Found label after column 1. (SIFIR)
+00F2                  00382         SIFIR
+00F2   3030           00383             MOVLW '0'
+00F3   201B           00384             CALL KARAKTER_GONDER
+00F4   03A8           00385             DECF SIRA,F
+                      00386             
+00F5   3000           00387             MOVLW   D'0'
+00F6   20AD           00388             CALL    DEGERLENDIR
+00F7   0008           00389             RETURN
+                      00390            
+Warning[207]: Found label after column 1. (ESIT)
+00F8                  00391         ESIT    
+00F8   303D           00392             MOVLW 0X3D
+00F9   201B           00393             CALL KARAKTER_GONDER
+00FA   03A8           00394             DECF SIRA,F
+00FB   0008           00395             RETURN
+                      00396             
+Warning[207]: Found label after column 1. (BOLME)
+00FC                  00397         BOLME
+00FC   302F           00398             MOVLW 0X2F
+00FD   201B           00399             CALL KARAKTER_GONDER
+00FE   03A8           00400             DECF SIRA,F
+                      00401             
+00FF   302F           00402             MOVLW 0X2F
+0100   00A4           00403             MOVWF ISLEM
+0101   0008           00404             RETURN
+                      00405             
+Warning[207]: Found label after column 1. (CARPMA)
+0102                  00406         CARPMA
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0102   3078           00407             MOVLW 0X78
+0103   201B           00408             CALL KARAKTER_GONDER
+0104   03A8           00409             DECF SIRA,F
+                      00410             
+0105   3078           00411             MOVLW 0X78
+0106   00A4           00412             MOVWF ISLEM
+0107   0008           00413             RETURN
+                      00414             
+Warning[207]: Found label after column 1. (TOPLAMA)
+0108                  00415         TOPLAMA
+0108   302B           00416             MOVLW 0X2B
+0109   201B           00417             CALL KARAKTER_GONDER
+010A   03A8           00418             DECF SIRA,F
+                      00419             
+010B   302B           00420             MOVLW 0X2B
+010C   00A4           00421             MOVWF ISLEM
+010D   0008           00422             RETURN
+                      00423             
+Warning[207]: Found label after column 1. (CIKARMA)
+010E                  00424         CIKARMA
+010E   302D           00425             MOVLW 0X2D
+010F   201B           00426             CALL KARAKTER_GONDER
+0110   03A8           00427             DECF SIRA,F
+                      00428             
+0111   302D           00429             MOVLW 0X2D
+0112   00A4           00430             MOVWF ISLEM
+0113   0008           00431             RETURN
+                      00432            
+Warning[207]: Found label after column 1. (BASLA)
+0114                  00433         BASLA
+0114   2024           00434             CALL        LCD_AYARLA
+0115   2047           00435             CALL        KEYPAD_AYARLA
+                      00436             
+Warning[207]: Found label after column 1. (TARA_RAKAM)
+0116                  00437         TARA_RAKAM      
+0116   3004           00438             MOVLW 0X04
+0117   0228           00439             SUBWF SIRA,W
+0118   1903           00440             BTFSC STATUS,Z
+0119   293C           00441             GOTO TARA_ISLEM
+011A   3002           00442             MOVLW 0X02
+011B   0228           00443             SUBWF SIRA,W 
+011C   1903           00444             BTFSC STATUS,Z
+011D   2950           00445             GOTO TARA_ESITTIR
+                      00446             
+Warning[207]: Found label after column 1. (SUTUN_963)
+011E                  00447             SUTUN_963
+011E   3040           00448             MOVLW b'01000000'
+011F   0088           00449             MOVWF PORTD                 ;963 SUTUNU AKTIF
+                      00450             
+0120   1808           00451             BTFSC   PORTD,0                     ;9 MU?  
+0121   20BC           00452             CALL    DOKUZ
+0122   1888           00453             BTFSC   PORTD,1                     ;6 MI?
+0123   20CE           00454             CALL    ALTI
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0124   1908           00455             BTFSC   PORTD,2                     ;3 MU?
+0125   20E0           00456             CALL    UC  
+                      00457             
+Warning[207]: Found label after column 1. (SUTUN_852)
+0126                  00458             SUTUN_852
+0126   3020           00459             MOVLW b'00100000'
+0127   0088           00460             MOVWF PORTD                 ;8520 SUTUNU AKTIF
+                      00461             
+0128   1808           00462             BTFSC   PORTD,0                     ;8 MI?  
+0129   20C2           00463             CALL    SEKIZ
+012A   1888           00464             BTFSC   PORTD,1                     ;5 MI?
+012B   20D4           00465             CALL    BES
+012C   1908           00466             BTFSC   PORTD,2                     ;2 MI?
+012D   20E6           00467             CALL    IKI 
+012E   1988           00468             BTFSC   PORTD,3                     ;0 MI?
+012F   20F2           00469             CALL    SIFIR
+                      00470 
+Warning[207]: Found label after column 1. (SUTUN_741)
+0130                  00471             SUTUN_741
+0130   3010           00472             MOVLW b'00010000'
+0131   0088           00473             MOVWF PORTD                 ;741  SUTUNU AKTIF
+                      00474             
+0132   1808           00475             BTFSC   PORTD,0                     ;7 MI?  
+0133   20C8           00476             CALL    YEDI
+0134   1888           00477             BTFSC   PORTD,1                     ;4 MU?
+0135   20DA           00478             CALL    DORT
+0136   1908           00479             BTFSC   PORTD,2                     ;1 MI?
+0137   20EC           00480             CALL    BIR 
+0138   1988           00481             BTFSC   PORTD,3                     ;CLEAR MI?
+0139   284E           00482             GOTO    CLEAR_LCD
+                      00483             
+                      00484             
+013A   217B           00485             CALL GECIKME_KEYPAD
+013B   2916           00486             GOTO TARA_RAKAM
+                      00487             
+Warning[207]: Found label after column 1. (TARA_ISLEM)
+013C                  00488         TARA_ISLEM
+013C   3003           00489             MOVLW 0X03
+013D   0228           00490             SUBWF SIRA,W
+013E   1903           00491             BTFSC STATUS,Z
+013F   2916           00492             GOTO  TARA_RAKAM
+                      00493         
+0140   3080           00494             MOVLW b'10000000'
+0141   0088           00495             MOVWF PORTD
+                      00496             
+0142   1808           00497             BTFSC   PORTD,0                     ;/ MU?  
+0143   20FC           00498             CALL    BOLME
+0144   1888           00499             BTFSC   PORTD,1                     ;X MI?
+0145   2102           00500             CALL    CARPMA
+0146   1908           00501             BTFSC   PORTD,2                     ;- MI?
+0147   210E           00502             CALL    CIKARMA
+0148   1988           00503             BTFSC   PORTD,3                     ;+ MI?
+0149   2108           00504             CALL    TOPLAMA
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00505             
+014A   3010           00506             MOVLW   b'00010000'         ;CLEAR MI?
+014B   0088           00507             MOVWF   PORTD
+014C   1988           00508             BTFSC   PORTD,3                     
+014D   284E           00509             GOTO    CLEAR_LCD
+                      00510  
+014E   217B           00511             CALL GECIKME_KEYPAD
+014F   293C           00512             GOTO TARA_ISLEM
+                      00513         
+Warning[207]: Found label after column 1. (TARA_ESITTIR)
+0150                  00514         TARA_ESITTIR
+0150   3001           00515             MOVLW 0X01
+0151   0228           00516             SUBWF SIRA,W
+0152   1903           00517             BTFSC STATUS,Z
+0153   285A           00518             GOTO  SONUC
+                      00519         
+0154   3040           00520             MOVLW b'01000000'
+0155   0088           00521             MOVWF PORTD                 ;963 SUTUNU AKTIF
+                      00522                 
+0156   1988           00523             BTFSC   PORTD,3
+0157   20F8           00524             CALL    ESIT
+                      00525                 
+0158   3010           00526             MOVLW   b'00010000'         ;CLEAR MI?
+0159   0088           00527             MOVWF   PORTD
+015A   1988           00528             BTFSC   PORTD,3                     
+015B   204E           00529             CALL    CLEAR_LCD
+                      00530                 
+015C   217B           00531             CALL GECIKME_KEYPAD
+015D   2950           00532             GOTO TARA_ESITTIR
+                      00533 
+Warning[207]: Found label after column 1. (CALIS)
+015E                  00534         CALIS
+015E   3010           00535             MOVLW   b'00010000'         ;CLEAR MI?
+015F   0088           00536             MOVWF   PORTD
+0160   1988           00537             BTFSC   PORTD,3                     
+0161   284E           00538             GOTO    CLEAR_LCD
+0162   0000           00539             NOP
+0163   295E           00540             GOTO CALIS    
+                      00541          
+                      00542             
+                      00543 ;****   GECIKMELERIN TAMAMI ***************************************
+                      00544             
+Warning[207]: Found label after column 1. (GECIKME_200USN)
+0164                  00545         GECIKME_200USN                          
+0164   30C8           00546             MOVLW       0xC8
+0165   00A0           00547             MOVWF       GECIKME1
+Warning[207]: Found label after column 1. (DNGU1)
+0166                  00548         DNGU1
+0166   0BA0           00549             DECFSZ      GECIKME1,1
+0167   2966           00550             GOTO        DNGU1
+0168   0008           00551             RETURN
+                      00552         
+Warning[207]: Found label after column 1. (GECIKME_5MSN)
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0169                  00553         GECIKME_5MSN
+0169   30E7           00554             MOVLW       0xE7
+016A   00A0           00555             MOVWF       GECIKME1
+016B   3004           00556             MOVLW       0x04
+016C   00A1           00557             MOVWF       GECIKME2
+Warning[207]: Found label after column 1. (D5_D)
+016D                  00558         D5_D
+016D   0BA0           00559             DECFSZ      GECIKME1, f
+016E   296D           00560             GOTO        D5_D
+016F   0BA1           00561             DECFSZ      GECIKME2, f
+0170   296D           00562             GOTO        D5_D
+0171   0008           00563             RETURN
+                      00564         
+Warning[207]: Found label after column 1. (GECIKME_50MSN)
+0172                  00565         GECIKME_50MSN
+0172   300F           00566             MOVLW       0x0F
+0173   00A0           00567             MOVWF       GECIKME1
+0174   3028           00568             MOVLW       0x28
+0175   00A1           00569             MOVWF       GECIKME2
+Warning[207]: Found label after column 1. (D50_D)
+0176                  00570         D50_D
+0176   0BA0           00571             DECFSZ      GECIKME1, f
+0177   2976           00572             GOTO        D50_D
+0178   0BA1           00573             DECFSZ      GECIKME2, f
+0179   2976           00574             GOTO        D50_D
+017A   0008           00575             RETURN
+                      00576             
+Warning[207]: Found label after column 1. (GECIKME_KEYPAD)
+017B                  00577         GECIKME_KEYPAD
+017B   30FE           00578             MOVLW       0xFE
+017C   00A0           00579             MOVWF       GECIKME1
+017D   30FF           00580             MOVLW       0xFF
+017E   00A1           00581             MOVWF       GECIKME2
+Warning[207]: Found label after column 1. (DK_D)
+017F                  00582         DK_D
+017F   0BA0           00583             DECFSZ      GECIKME1, f
+0180   297F           00584             GOTO        DK_D
+0181   0BA1           00585             DECFSZ      GECIKME2, f
+0182   297F           00586             GOTO        DK_D
+0183   0008           00587             RETURN
+                      00588 
+Warning[207]: Found label after column 1. (BITIR)
+0184                  00589         BITIR
+Warning[205]: Found directive in column 1. (END)
+                      00590 END
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ALTI                              000000CE
+BASLA                             00000114
+BCLIE                             00000003
+BCLIF                             00000003
+BES                               000000D4
+BF                                00000000
+BIR                               000000EC
+BIRE_ATA                          000000B6
+BIRLER                            00000031
+BIR_BASAMAK                       00000097
+BITIR                             00000184
+BOLME                             000000FC
+BOL_F                             00000082
+BRGH                              00000002
+C                                 00000000
+CALIS                             0000015E
+CARPMA                            00000102
+CARP_F                            0000008B
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CIKARMA                           0000010E
+CIKAR_F                           00000079
+CKE                               00000006
+CKP                               00000004
+CLEAR_LCD                         0000004E
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+D50_D                             00000176
+D5_D                              0000016D
+DATA_ADDRESS                      00000005
+DC                                00000001
+DEGER1                            00000026
+DEGER2                            00000027
+DEGERLENDIR                       000000AD
+DK_D                              0000017F
+DNGU1                             00000166
+DOKUZ                             000000BC
+DORT                              000000DA
+DUSEN_KENAR                       00000002
+D_A                               00000005
+D_BOL                             00000084
+D_CARP                            0000008C
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+EKSI                              0000006F
+ESIT                              000000F8
+F                                 00000001
+FATIH_AYDIN                       00000046
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GECIKME1                          00000020
+GECIKME2                          00000021
+GECIKME3                          00000022
+GECIKME_200USN                    00000164
+GECIKME_50MSN                     00000172
+GECIKME_5MSN                      00000169
+GECIKME_KEYPAD                    0000017B
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+IKI                               000000E6
+IKIYE_ATA                         000000B9
+IKI_BASAMAK                       0000009B
+IKI_YAZ                           000000A6
+IKI_YAZ_BOLUM                     000000A2
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+ISLEM                             00000024
+KARAKTER_GONDER                   0000001B
+KEYPAD_AYARLA                     00000047
+KOMUT4_GONDER                     00000008
+KOMUT_GONDER                      00000011
+LCD_AYARLA                        00000024
+LCD_E                             00000005
+LCD_PORT                          00000006
+LCD_RS                            00000004
+LCD_TEMP                          00000025
+LCD_TRIS                          00000086
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+ON                                00000034
+ONLAR                             00000032
+OPTION_REG                        00000081
+OTUZF                             00000030
+P                                 00000004
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RESULT                            00000029
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SEKIZ                             000000C2
+SEN                               00000000
+SIFIR                             000000F2
+SIRA                              00000028
+SMP                               00000007
+SONUC                             0000005A
+SONUC_DENETLE                     00000091
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SUTUN_741                         00000130
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SUTUN_852                         00000126
+SUTUN_963                         0000011E
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TARA_ESITTIR                      00000150
+TARA_ISLEM                        0000013C
+TARA_RAKAM                        00000116
+TMP                               00000035
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOPLAMA                           00000108
+TOPLA_F                           0000006B
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 20
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+UC                                000000E0
+VERI4                             00000023
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+YEDEK                             00000033
+YEDI                              000000C8
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 21
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP_ALL                           00000FCF
+_CP_HALF                          00001FDF
+_CP_OFF                           00003FFF
+_CP_UPPER_256                     00002FEF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_ENABLE_OFF                   00003DFF
+_WRT_ENABLE_ON                    00003FFF
+_WRT_OFF                          00003DFF
+_WRT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXX------------ ---------------- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   388
+Program Memory Words Free:  7804
+
+
+MPASM 5.84                HESAP_MAKINESI.ASM   11-19-2019  14:41:41         PAGE 22
+
+
+
+
+
+Errors   :     0
+Warnings :    77 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+

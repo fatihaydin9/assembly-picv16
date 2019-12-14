@@ -1,0 +1,17 @@
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 7 : Found label after column 1. (DEGER)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 8 : Found label after column 1. (ELDE)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 9 : Found label after column 1. (BIR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 10 : Found label after column 1. (DEG1)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 11 : Found label after column 1. (DEG2)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 21 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 23 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 25 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 27 : Found label after column 1. (RESETLE)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 37 : Found label after column 1. (BUTONDONGU)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 42 : Found label after column 1. (ILERISAY)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 55 : Found label after column 1. (ELDE_ARTIR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 68 : Found label after column 1. (GERISAY)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 81 : Found label after column 1. (ELDE_YOK)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 94 : Found label after column 1. (ELDE_VAR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 107 : Found label after column 1. (GECIKME)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\ODEV1.X\ODEV1.ASM 116 : Found label after column 1. (DEG2AZALT)

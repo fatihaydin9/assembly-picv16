@@ -1,0 +1,40 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Fri Nov 01 19:19:53 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000064
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000031      
+            50 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                BASLANGIC   0x000000    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                       DD   0x00000e    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                DEG2AZALT   0x00002f    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                  GECIKME   0x000028    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                  LOOK_UP   0x00001d    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                BASLANGIC   0x000000    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                       DD   0x00000e    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                  LOOK_UP   0x00001d    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                  GECIKME   0x000028    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+                DEG2AZALT   0x00002f    program     static C:\Users\fatay\MPLABXProjects\7SEG.X\7seg.asm
+
+

@@ -1,0 +1,34 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Fri Oct 11 16:48:53 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000014
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000009      
+            10 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   CARPMA   0x000004    program     static C:\Users\fatay\MPLABXProjects\CARPMA.X\carpma.asm
+                   SONLAN   0x000009    program     static C:\Users\fatay\MPLABXProjects\CARPMA.X\carpma.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   CARPMA   0x000004    program     static C:\Users\fatay\MPLABXProjects\CARPMA.X\carpma.asm
+                   SONLAN   0x000009    program     static C:\Users\fatay\MPLABXProjects\CARPMA.X\carpma.asm
+
+

@@ -1,0 +1,49 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Sat Nov 09 19:48:43 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000004
+                   .cinit    romdata   0x000002    program   0x000004
+                   .org_1       code   0x000004    program   0x0000c8
+.config_2007_BUILD/DEFAULT/PRODUCTION/ODEV2.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000067      
+                            0x002007    0x002007      
+            105 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    CALIS   0x00003e    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                DEG2AZALT   0x00005d    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                    DONUS   0x00001b    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                  GECIKME   0x000056    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                    KESME   0x000004    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                  LOOK_UP   0x00004b    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+               ON_AYARLAR   0x000022    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                SOL_ARTIR   0x000060    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    KESME   0x000004    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                    DONUS   0x00001b    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+               ON_AYARLAR   0x000022    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                    CALIS   0x00003e    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                  LOOK_UP   0x00004b    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                  GECIKME   0x000056    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                DEG2AZALT   0x00005d    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+                SOL_ARTIR   0x000060    program     static C:\Users\fatay\MPLABXProjects\ODEV2.X\odev2.asm
+
+

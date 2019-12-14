@@ -1,0 +1,34 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Sat Oct 12 13:06:40 2019
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000012
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000008      
+            9 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+            DEG1BUYUKDEG2   0x000009    program     static C:\Users\fatay\MPLABXProjects\IFELSE.X\if_else.asm
+            DEG2BUYUKDEG1   0x000009    program     static C:\Users\fatay\MPLABXProjects\IFELSE.X\if_else.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+            DEG1BUYUKDEG2   0x000009    program     static C:\Users\fatay\MPLABXProjects\IFELSE.X\if_else.asm
+            DEG2BUYUKDEG1   0x000009    program     static C:\Users\fatay\MPLABXProjects\IFELSE.X\if_else.asm
+
+

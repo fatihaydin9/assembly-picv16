@@ -1,0 +1,17 @@
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 1 : Found directive in column 1. (__CONFIG)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 3 : Found directive in column 1. (list)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPLABX\V5.20\MPASMX\P16F877.INC 34 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 13 : Found directive in column 1. (ORG)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 24 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 25 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 54 : Found label after column 1. (KONTROL)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 66 : Found label after column 1. (PARLAKLIK1_ARTIR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 76 : Found label after column 1. (PARLAKLIK1_AZALT)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 86 : Found label after column 1. (PARLAKLIK2_ARTIR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 96 : Found label after column 1. (PARLAKLIK2_AZALT)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 106 : Found label after column 1. (GECIKME)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 109 : Found label after column 1. (GECIKME1)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 112 : Found label after column 1. (GECIKME2)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\PWM_DENEME.X\PWM_DENEME.ASM 119 : Found label after column 1. (PWM_ISLEM)

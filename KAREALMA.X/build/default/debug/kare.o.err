@@ -1,0 +1,6 @@
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPLABX\V5.20\MPASMX\P16F877.INC 34 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\KAREALMA.X\KARE.ASM 6 : Found label after column 1. (DEGX)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\KAREALMA.X\KARE.ASM 7 : Found label after column 1. (DEGY)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\KAREALMA.X\KARE.ASM 8 : Found label after column 1. (SONUC)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\KAREALMA.X\KARE.ASM 18 : Found label after column 1. (DONGU)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\KAREALMA.X\KARE.ASM 24 : Found label after column 1. (SONLAN)

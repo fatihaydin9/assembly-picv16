@@ -1,0 +1,20 @@
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 4 : Found label after column 1. (DEGER)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 5 : Found label after column 1. (DEGER2)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 6 : Found label after column 1. (TEMP)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 7 : Found label after column 1. (BIRLER)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 8 : Found label after column 1. (ONLAR)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 9 : Found label after column 1. (YUZLER)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 10 : Found label after column 1. (OKUNAN_DEGER)
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 11 : Found label after column 1. (REFERANS)
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 23 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 52 : Using default destination of 1 (file).
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 52 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 57 : Found label after column 1. (E2)
+Warning[203] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 201 : Found opcode in column 1. (RETURN)
+Message[305] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 213 : Using default destination of 1 (file).
+Message[305] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 230 : Using default destination of 1 (file).
+Warning[205] C:\USERS\FATAY\MPLABXPROJECTS\MITSUBISHI.X\KLIMA.ASM 255 : Found directive in column 1. (END)
