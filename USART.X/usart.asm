@@ -1,3 +1,5 @@
+    ;TERMINALDEN VERI GIRILSIN VE PIC UZERINDEN LCD 'YE YAZDIRILSIN. (PORTB)
+    
     list p = 16f877a
     #include<p16f877a.inc>
     
