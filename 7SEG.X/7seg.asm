@@ -1,3 +1,5 @@
+   ;7SEGMENT DISPLAY 'E 06 (ANKARA PLAKASI) YAZDIRAN KODU YAZINIZ
+
     list p = 16f877a
     #include<p16f877a.inc>
     
