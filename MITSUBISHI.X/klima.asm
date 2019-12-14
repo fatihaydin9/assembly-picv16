@@ -4,7 +4,7 @@
 ;Sistemin çalışmasını PROTEUS ortamında test edeceksiniz. 
 ;Klimanın motorunun temsilen bir adet I/O pinine bağlı ledi yakıp söndürünüz. 
 ;Eğer ortam sıcaklığı referans sıcaklıktan daha büyükse ledi yakınız. Aksi durumda söndürünüz. 
-;Hem ortam hem de hedef sıcaklık LCD de görüntülenecektir. 
+;Hem ortam hem de hedef sıcaklık LCD de görüntülenmelidir.
 
 
 	LIST P=16F877A
